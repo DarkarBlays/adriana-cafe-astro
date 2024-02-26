@@ -1,6 +1,7 @@
 ---
+import ListCafe from "../components/listCafe";
 import Layout from "../layouts/Layout.astro";
-import Card from "../components/Card.astro";
+const pathname = Astro.url.pathname;
 ---
 
 <Layout title="Welcome Adriana's Cafe.">
@@ -14,98 +15,90 @@ import Card from "../components/Card.astro";
           and shipped fresh weekly.
         </p>
         <nav class="navegacion">
-          <a href="/">All Products</a>
-          <a href="/">Available Now</a>
+          <a href="/" class={pathname === "/" ? "active" : ""}>All Products</a>
+          <a href="/Available" class={pathname === "/Available" ? "active" : ""}
+            >Available Now</a
+          >
         </nav>
       </div>
-
-      <ul role="list" class="link-card-grid">
-        <Card
-          href="https://docs.astro.build/"
-          title="Cappuccino"
-          body="Learn how Astro works and explore the official API docs."
-        />
-        <Card
-          href="https://astro.build/integrations/"
-          title="Cappuccino"
-          body="Supercharge your project with new frameworks and libraries."
-        />
-        <Card
-          href="https://astro.build/themes/"
-          title="Cappuccino"
-          body="Explore a galaxy of community-built starter themes."
-        />
-        <Card
-          href="https://astro.build/chat/"
-          title="Cappuccino"
-          body="Come say hi to our amazing Discord community. ❤️"
-        />
-      </ul>
+      <div class="grid">
+        <ListCafe/>
+      </div>
     </div>
   </main>
 </Layout>
 
-<style> 
-	@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
-  	@import url("https://fonts.googleapis.com");
- 	@import url("https://fonts.gstatic.com");
-	
-	html{
-		font-family: 'DM Sans', sans-serif;
-	}
-	.head { 
-		padding: 1rem; 
-		text-align: center; 
-	} 
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
 
-	.head h1 { 
-		font-size: 2rem; 
-		font-weight: 500; 
-		line-height: 1; 
-		color: #fef7ee; 
-	} 
+  html {
+    font-family: "DM Sans", sans-serif;
+  }
+  .head {
+    padding: 1rem;
+    text-align: center;
+  }
 
-	.head .text { 
-		font-size: 1.1rem; 
-		color: #6f757c; 
-		text-align: center; 
-		margin: 0 auto; 
-		width: 40%; 
-	} 
-	.container { 
-		padding: 5rem; 
-		background-color: #1b1d1f; 
-		border-radius: 1rem; 
-		margin: -5rem 5rem 2rem 5rem; 
-	} 
-	.link-card-grid { 
-		display: grid; 
-		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr)); 
-		gap: 2rem; 
-		adding: 0; 
-	} 
-	.head .navegacion { 
-		display: flex; 
-		align-items: center; 
-		gap: 3rem; 
-		justify-content: center; 
-	} 
-	.navegacion a { 
-		color: #fef7ee; 
-		text-decoration: none; 
-		font-size: 1rem; 
-		font-weight: 600; 
-		padding: 0.5rem; 
-		transition-property: background-color; transition-duration: 300ms; 
-		border-radius: 0.8rem; 
-		margin-top: 1.2rem;
-	} 
-	.navegacion a:hover, .active { 
-		background-color: #6f757c; 
-	} 
-	@media (min-width: 678px) { 
-		
-	} 
+  .head h1 {
+    font-size: 2rem;
+    font-weight: 500;
+    line-height: 1;
+    color: #fef7ee;
+  }
+
+  .head .text {
+    font-size: 1.1rem;
+    color: #6f757c;
+    text-align: center;
+    margin: 0 auto;
+    width: 40%;
+  }
+  .container {
+    padding: 5rem;
+    background-color: #1b1d1f;
+    border-radius: 1rem;
+    margin: -5rem 5rem 2rem 5rem;
+  }
+  .link-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
+    gap: 2rem;
+    adding: 0;
+  }
+  .head .navegacion {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    justify-content: center;
+  }
+  .navegacion a {
+    color: #fef7ee;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 0.5rem;
+    transition-property: background-color;
+    transition-duration: 300ms;
+    border-radius: 0.8rem;
+    margin-top: 1.2rem;
+  }
+  .navegacion a:hover,
+  .active {
+    background-color: #6f757c;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  @media (min-width: 678px) {
+    .grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 992px) {
+    .grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
 </style>
-
-
